@@ -127,19 +127,19 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 git clone https://aur.archlinux.org/yay-git.git 
 cd yay-git
-makepkg -si
+sudo -u $USERNAME makepkg -si
 
 cd ..
 rm -rf yay-git
 
-pacman -S plymouth
+pacman -S --noconfirm plymouth
 
 echo -ne "
 -------------------------------------------------------------------------
                Enabling (and Theming) Plymouth Boot Splash
 -------------------------------------------------------------------------
 "
-yay -S plymouth-theme-arch-logo
+sudo -u $USERNAME yay -S plymouth-theme-arch-logo
 
 if [[ $FS == "luks" ]]; then
   sed -i 's/HOOKS=(base udev*/& plymouth/' /etc/mkinitcpio.conf # add plymouth after base udev
