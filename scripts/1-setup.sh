@@ -17,6 +17,8 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 source $HOME/ArchTitus/configs/setup.conf
+
+pacman -S --noconfirm --needed grub git curl efibootmgr
 echo -ne "
 -------------------------------------------------------------------------
                     GRUB BIOS Bootloader Install & Check
@@ -36,9 +38,9 @@ echo -ne "
                     Setting up mirrors for optimal download 
 -------------------------------------------------------------------------
 "
-pacman -S --noconfirm --needed pacman-contrib curl
-pacman -S --noconfirm --needed reflector rsync grub arch-install-scripts git
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# pacman -S --noconfirm --needed pacman-contrib curl
+# pacman -S --noconfirm --needed reflector rsync grub arch-install-scripts git
+# cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 nc=$(grep -c ^processor /proc/cpuinfo)
 echo -ne "
@@ -121,8 +123,7 @@ echo -ne "
 # Graphics Drivers find and install
 gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
-    pacman -S --noconfirm --needed nvidia
-	nvidia-xconfig
+    pacman -S --noconfirm --needed nvidia-dkms
 elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
     pacman -S --noconfirm --needed xf86-video-amdgpu
 elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then

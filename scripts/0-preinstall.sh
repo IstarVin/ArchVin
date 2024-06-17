@@ -152,7 +152,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 # libnewt
-pacstrap /mnt base base-devel linux-zen linux-firmware nano sudo archlinux-keyring wget --noconfirm --needed 
+pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware nano vim sudo archlinux-keyring wget --noconfirm --needed 
 echo "keyserver hkp://keyserver.ubuntu.com" >> /mnt/etc/pacman.d/gnupg/gpg.conf
 cp -R ${SCRIPT_DIR} /mnt/root/ArchTitus # flag
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
