@@ -32,6 +32,7 @@ pacman -S --noconfirm archlinux-keyring #update keyrings to latest to prevent pa
 pacman -S --noconfirm --needed pacman-contrib
 # setfont ter-v22b
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed -i 's/^#Color/Color/' /etc/pacman.conf
 pacman -S --noconfirm --needed reflector rsync grub
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 echo -ne "
