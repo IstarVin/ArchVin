@@ -205,10 +205,10 @@ fi
 yay_dir=/home/$USERNAME/.yay-git
 sudo -u $USERNAME git clone https://aur.archlinux.org/yay-git.git /home/$USERNAME/.yay-git
 cwd=$(pwd)
-cd yay-git
+cd $yay_dir
 sudo -u $USERNAME makepkg -si --noconfirm
 
-cd cwd
+cd $cwd
 rm -rf $yay_dir
 
 echo -ne "
