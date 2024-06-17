@@ -202,8 +202,8 @@ if [[ ${FS} == "luks" ]]; then
     mkinitcpio -p linux
 fi
 
-yay_dir=/home/$USERNAME/.yay-git
-sudo -u $USERNAME git clone https://aur.archlinux.org/yay-git.git /home/$USERNAME/.yay-git
+yay_dir=/home/$USERNAME/.yay
+sudo -u $USERNAME git clone https://aur.archlinux.org/yay.git $yay_dir
 cwd=$(pwd)
 cd $yay_dir
 sudo -u $USERNAME makepkg -si --noconfirm
