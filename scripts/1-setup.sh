@@ -201,6 +201,16 @@ if [[ ${FS} == "luks" ]]; then
 # making mkinitcpio with linux kernel
     mkinitcpio -p linux
 fi
+
+yay_dir=/home/$USERNAME/.yay-git
+sudo -u $USERNAME git clone https://aur.archlinux.org/yay-git.git /home/$USERNAME/.yay-git
+cwd=$(pwd)
+cd yay-git
+sudo -u $USERNAME makepkg -si --noconfirm
+
+cd cwd
+rm -rf $yay_dir
+
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh

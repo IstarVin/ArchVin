@@ -125,13 +125,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # fi
 
-git clone https://aur.archlinux.org/yay-git.git 
-cd yay-git
-sudo -u $USERNAME makepkg -si
-
-cd ..
-rm -rf yay-git
-
 pacman -S --noconfirm plymouth
 
 echo -ne "
