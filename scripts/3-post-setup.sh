@@ -35,8 +35,7 @@ source ${HOME}/ArchTitus/configs/setup.conf
 # sed -i "s%GRUB_CMDLINE_LINUX_DEFAULT=\"%GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=UUID=${ENCRYPTED_PARTITION_UUID}:ROOT root=/dev/mapper/ROOT %g" /etc/default/grub
 # fi
 # # set kernel parameter for adding splash screen
-# sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& splash /' /etc/default/grub
-
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& splash /' /etc/default/grub
 # echo -e "Installing CyberRe Grub theme..."
 # THEME_DIR="/boot/grub/themes"
 # THEME_NAME=CyberRe
@@ -132,7 +131,7 @@ echo -ne "
                Enabling (and Theming) Plymouth Boot Splash
 -------------------------------------------------------------------------
 "
-sudo -u $USERNAME yay -S plymouth-theme-arch-logo
+sudo -u $USERNAME yay -S --noconfirm plymouth-theme-arch-logo
 
 if [[ $FS == "luks" ]]; then
   sed -i 's/HOOKS=(base udev*/& plymouth/' /etc/mkinitcpio.conf # add plymouth after base udev
