@@ -19,10 +19,17 @@ echo -ne "
 source $HOME/ArchTitus/configs/setup.conf
 echo -ne "
 -------------------------------------------------------------------------
+                    GRUB BIOS Bootloader Install & Check
+-------------------------------------------------------------------------
+"
+#flag
+grub-install --target=x86_64-efi --bootloader-id=Archer --efi-directory=/boot
+echo -ne "
+-------------------------------------------------------------------------
                     Network Setup 
 -------------------------------------------------------------------------
 "
-pacman -S --noconfirm --needed networkmanager dhclient
+pacman -S --noconfirm --needed networkmanager
 systemctl enable --now NetworkManager
 echo -ne "
 -------------------------------------------------------------------------
