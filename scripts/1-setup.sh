@@ -25,7 +25,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 #flag
-grub-install --target=x86_64-efi --bootloader-id=Archer --efi-directory=/boot/efi
+grub-install --target=x86_64-efi --bootloader-id=Archer --efi-directory=/boot ${DISK}
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
